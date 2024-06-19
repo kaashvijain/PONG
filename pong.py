@@ -1,4 +1,5 @@
 import turtle 
+import winsound
 
 wn = turtle.Screen()
 wn.title("Pong by Kaashvi Jain")
@@ -88,10 +89,14 @@ while True:
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1
+        winsound.PlaySound("beep.wav", winsound.SND_ASYNC)
+
 
     if ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1
+        winsound.PlaySound("beep.wav", winsound.SND_ASYNC)
+
 
     if ball.xcor() >390:
         ball.goto(0,0)
@@ -99,6 +104,8 @@ while True:
         score_a += 1
         pen.clear()
         pen.write("Player A: {}   Player B: {}".format(score_a, score_b), align="center", font=("Courier",24,"normal"))
+        winsound.PlaySound("lose.wav", winsound.SND_ASYNC)
+
 
 
     if ball.xcor() < -390:
@@ -107,6 +114,8 @@ while True:
         score_b += 1
         pen.clear()
         pen.write("Player A: {}   Player B: {}".format(score_a, score_b), align="center", font=("Courier",24,"normal"))
+        winsound.PlaySound("lose.wav", winsound.SND_ASYNC)
+
 
 
     # Paddle and Ball Collisions
